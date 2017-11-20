@@ -30,6 +30,7 @@ ClientThread.start()
 while True:
     ''' Infinate loop | ENSURE SOME SORT OF ESCAPE IN ANY CODE YOU HAND IN '''
     #>> Recieve messages from the server
+    print("Recieving")
     msg = sock.recv(1024)
     #>> Decode the recieved message
     decodedMsg = msg.decode()
