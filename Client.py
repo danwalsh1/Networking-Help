@@ -12,12 +12,13 @@ sock.connect(('127.0.0.1', 44444))
 
 def sendThread():
     ''' This function will be executed when the thread below is opened '''
-    #>> Get user input
-    msg = input("")
-    #>> Encode the users input
-    encodedMsg = msg.encode()
-    #>> Send the encoded data to the server
-    sock.send(encodedMsg)
+    while True:
+        #>> Get user input
+        msg = input("")
+        #>> Encode the users input
+        encodedMsg = msg.encode()
+        #>> Send the encoded data to the server
+        sock.send(encodedMsg)
     
 #>> Create the thread to be opened
 ClientThread = threading.Thread(target = sendThread)
