@@ -16,13 +16,14 @@ connections = []
 
 def clientThread(conn, addr):
     ''' This function will be executed when a new thread is opened when any new client connects to the server '''
-    #>> Recieve a message from the client
-    msg = conn.recv(1024)
-    #>> Send the message to every client that isn't the one which sent the message
-    for connection in connections:
-        if connection != conn:
-            #>> The message doesn't need to be encoded because it was already encoded by the client
-            connection.send(msg)
+    while True:
+        #>> Recieve a message from the client
+        msg = conn.recv(1024)
+        #>> Send the message to every client that isn't the one which sent the message
+        for connection in connections:
+            if connection != conn:
+                #>> The message doesn't need to be encoded because it was already encoded by the client
+                connection.send(msg)
 
 while True:
     ''' Infinate loop | ENSURE SOME SORT OF ESCAPE IN ANY CODE YOU HAND IN '''
